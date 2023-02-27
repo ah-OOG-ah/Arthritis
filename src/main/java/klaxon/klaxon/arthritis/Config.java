@@ -1,4 +1,4 @@
-package com.myname.mymodid;
+package klaxon.klaxon.arthritis;
 
 import java.io.File;
 
