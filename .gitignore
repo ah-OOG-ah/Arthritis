@@ -23,8 +23,9 @@
 hs_err_pid*
 replay_pid*
 
-# Ignore VSCode
+# Ignore IDEs
 .vscode/
+.idea/
 
 # Ignore gradle
 .gradle/

@@ -8,7 +8,7 @@ import java.util.Set;
 
 // Most this is shamelessly copied from Hodgepodge, thank you, Mitch!
 @LateMixin
-public class ArthritisLateMixins implements ILateMixinLoader {
+public class LateMixins implements ILateMixinLoader {
 
     // This class SHOULD load late mixins.
     // GTNHMixins should load it, GO does not reference this class.
@@ -27,10 +27,10 @@ public class ArthritisLateMixins implements ILateMixinLoader {
         final List<String> mixins = new ArrayList<>();
 
         // For each mixin...
-        for (ArthritisMixins mixin : ArthritisMixins.values()) {
+        for (Mixins mixin : Mixins.values()) {
 
             // If late
-            if (mixin.phase == ArthritisMixins.Phase.LATE) {
+            if (mixin.phase == Mixins.Phase.LATE) {
 
                 // Add them to mixins
                 mixins.addAll(mixin.mixinClasses);

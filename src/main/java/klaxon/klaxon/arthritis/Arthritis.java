@@ -11,9 +11,10 @@ import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 import cpw.mods.fml.common.event.FMLServerStartingEvent;
 
 @Mod(modid = Tags.MODID, version = Tags.VERSION, name = Tags.MODNAME, acceptedMinecraftVersions = "[1.7.10]")
-public class MyMod {
+public class Arthritis {
 
     public static final Logger LOG = LogManager.getLogger(Tags.MODID);
+
 
     @SidedProxy(clientSide = "com.myname.mymodid.ClientProxy", serverSide = "com.myname.mymodid.CommonProxy")
     public static CommonProxy proxy;
@@ -42,4 +43,6 @@ public class MyMod {
     public void serverStarting(FMLServerStartingEvent event) {
         proxy.serverStarting(event);
     }
+
+    public static void bootstrap() {}
 }

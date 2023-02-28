@@ -3,7 +3,7 @@ package klaxon.klaxon.arthritis.mixinhandler;
 public enum TargetedMod {
 
     // MC has no modid or coremodclass to look for, it's always there
-    VANILLA("Minecraft", null, null),
+    VANILLA("Minecraft", null, null);
 
     // Name in @Mod
     public final String modName;
