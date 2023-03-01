@@ -1,5 +1,10 @@
 package klaxon.klaxon.arthritis.registry;
 
+import klaxon.klaxon.arthritis.io.data.CacheInfo;
+import klaxon.klaxon.arthritis.registry.data.StageData;
+import klaxon.klaxon.taski.Task;
+import klaxon.klaxon.taski.builtin.StepTask;
+
 import javax.annotation.Nullable;
 import java.util.function.Consumer;
 

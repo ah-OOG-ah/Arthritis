@@ -1,7 +1,17 @@
 package klaxon.klaxon.arthritis;
 
+import klaxon.klaxon.arthritis.api.CreakEntrypoint;
 import klaxon.klaxon.arthritis.api.CreakModule;
+import klaxon.klaxon.arthritis.api.MissingHandler;
+import klaxon.klaxon.arthritis.api.config.ConfigHandler;
+import klaxon.klaxon.arthritis.io.RegistrySerializer;
+import klaxon.klaxon.arthritis.io.MappingSerializer;
+import klaxon.klaxon.arthritis.io.data.CacheInfo;
+import klaxon.klaxon.arthritis.registry.RegistryFactory;
+import klaxon.klaxon.arthritis.registry.RegistryReader;
+import klaxon.klaxon.arthritis.registry.data.StageData;
 import klaxon.klaxon.arthritis.utils.ProfilerUtil;
+import klaxon.klaxon.taski.builtin.StepTask;
 import org.apache.commons.io.FileUtils;
 
 import javax.annotation.Nullable;
@@ -12,6 +22,7 @@ import java.nio.file.attribute.BasicFileAttributes;
 import java.nio.file.attribute.FileTime;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.function.Consumer;
 import java.util.stream.Stream;
 
 public class Cache {
@@ -22,17 +33,17 @@ public class Cache {
 
     // DashLoader metadata
     private final List<CreakModule<?>> cacheHandlers;
-    private final List<DashObjectClass<?, ?>> dashObjects;
+    private final List<CreakObjectClass<?, ?>> dashObjects;
 
     // Serializers
     private final RegistrySerializer registrySerializer;
     private final MappingSerializer mappingsSerializer;
 
-    Cache(Path cacheDir, List<CreakModule<?>> cacheHandlers, List<DashObjectClass<?, ?>> dashObjects) {
+    Cache(Path cacheDir, List<CreakModule<?>> cacheHandlers, List<CreakObjectClass<?, ?>> creakObjects) {
         this.cacheDir = cacheDir;
         this.cacheHandlers = cacheHandlers;
-        this.dashObjects = dashObjects;
-        this.registrySerializer = new RegistrySerializer(dashObjects);
+        this.dashObjects = creakObjects;
+        this.registrySerializer = new RegistrySerializer(creakObjects);
         this.mappingsSerializer = new MappingSerializer(cacheHandlers);
     }
 
@@ -106,7 +117,7 @@ public class Cache {
 
             // Setup handlers
             List<MissingHandler<?>> handlers = new ArrayList<>();
-            for (DashEntrypoint entryPoint : FabricLoader.getInstance().getEntrypoints("dashloader", DashEntrypoint.class)) {
+            for (CreakEntrypoint entryPoint : FabricLoader.getInstance().getEntrypoints("dashloader", CreakEntrypoint.class)) {
                 entryPoint.onDashLoaderSave(handlers);
             }
             RegistryFactory factory = RegistryFactory.create(handlers, dashObjects);

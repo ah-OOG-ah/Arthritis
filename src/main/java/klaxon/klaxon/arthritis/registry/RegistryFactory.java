@@ -2,6 +2,11 @@ package klaxon.klaxon.arthritis.registry;
 
 import it.unimi.dsi.fastutil.objects.Object2ByteMap;
 import it.unimi.dsi.fastutil.objects.Object2ByteOpenHashMap;
+import klaxon.klaxon.arthritis.CreakObjectClass;
+import klaxon.klaxon.arthritis.api.CreakObject;
+import klaxon.klaxon.arthritis.api.MissingHandler;
+import klaxon.klaxon.arthritis.registry.data.ChunkData;
+import klaxon.klaxon.arthritis.registry.data.StageData;
 
 import java.util.ArrayDeque;
 import java.util.ArrayList;
@@ -22,7 +27,7 @@ public final class RegistryFactory {
         this.chunks = chunks;
     }
 
-    public static <R, D extends DashObject<R>> RegistryFactory create(List<MissingHandler<?>> missingHandlers, List<DashObjectClass<?, ?>> dashObjects) {
+    public static <R, D extends CreakObject<R>> RegistryFactory create(List<MissingHandler<?>> missingHandlers, List<CreakObjectClass<?, ?>> dashObjects) {
 
         //noinspection unchecked
         ChunkFactory<R, D>[] chunks = new ChunkFactory[dashObjects.size()];
@@ -33,7 +38,7 @@ public final class RegistryFactory {
         }
 
         for (int i = 0; i < dashObjects.size(); i++) {
-            final DashObjectClass<R, D> dashObject = (DashObjectClass<R, D>) dashObjects.get(i);
+            final CreakObjectClass<R, D> dashObject = (CreakObjectClass<R, D>) dashObjects.get(i);
             var factory = FactoryBinding.create(dashObject);
             var dashClass = dashObject.getDashClass();
             var name = dashClass.getSimpleName();
@@ -47,7 +52,7 @@ public final class RegistryFactory {
     }
 
     @SuppressWarnings("unchecked")
-    public <R, D extends DashObject<R>> int add(R object) {
+    public <R, D extends CreakObject<R>> int add(R object) {
         if (this.dedup.containsKey(object)) {
             return this.dedup.get(object);
         }
