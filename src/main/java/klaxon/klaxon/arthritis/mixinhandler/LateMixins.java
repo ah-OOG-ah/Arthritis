@@ -1,10 +1,11 @@
 package klaxon.klaxon.arthritis.mixinhandler;
 
-import com.gtnewhorizon.gtnhmixins.ILateMixinLoader;
-import com.gtnewhorizon.gtnhmixins.LateMixin;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
+
+import com.gtnewhorizon.gtnhmixins.ILateMixinLoader;
+import com.gtnewhorizon.gtnhmixins.LateMixin;
 
 // Most this is shamelessly copied from Hodgepodge, thank you, Mitch!
 @LateMixin
@@ -16,7 +17,7 @@ public class LateMixins implements ILateMixinLoader {
     // Returns the LateMixin config JSON
     @Override
     public String getMixinConfig() {
-        return "mixins.gregtoriooverlays.late.json";
+        return "mixins.arthritis.late.json";
     }
 
     // Returns the actual mixins to load

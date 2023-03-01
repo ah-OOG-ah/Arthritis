@@ -6,13 +6,13 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
-import com.gtnewhorizon.gtnhmixins.IEarlyMixinLoader;
-
-import cpw.mods.fml.relauncher.IFMLLoadingPlugin;
 import klaxon.klaxon.arthritis.mixinhandler.Mixins;
 
+import com.gtnewhorizon.gtnhmixins.IEarlyMixinLoader;
+import cpw.mods.fml.relauncher.IFMLLoadingPlugin;
+
 @IFMLLoadingPlugin.MCVersion("1.7.10")
-@IFMLLoadingPlugin.SortingIndex(1002)
+@IFMLLoadingPlugin.SortingIndex(420) // no idea if this is important
 public class ArthritisCore implements IFMLLoadingPlugin, IEarlyMixinLoader {
 
     public static final SortingIndex index = ArthritisCore.class.getAnnotation(IFMLLoadingPlugin.SortingIndex.class);

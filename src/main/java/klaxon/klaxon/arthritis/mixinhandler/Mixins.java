@@ -1,11 +1,12 @@
 package klaxon.klaxon.arthritis.mixinhandler;
 
-import cpw.mods.fml.relauncher.FMLLaunchHandler;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Set;
 import java.util.function.Supplier;
+
+import cpw.mods.fml.relauncher.FMLLaunchHandler;
 
 // This enum defines all the mixins to load
 public enum Mixins {
@@ -13,11 +14,19 @@ public enum Mixins {
     // The plot starts...
     // Inject Arthritis bootstrap before anything else.
     BOOTSTRAP_ARTHRITIS(new Builder("Inject Arthritis Bootstrap")
-            .addMixinClasses("MainMixin")
-            .setSide(Side.BOTH)
-            .addTargetedMod(TargetedMod.VANILLA)
-            .setPhase(Phase.EARLY)
-            .setApplyIf(() -> true));
+        .setPhase(Phase.EARLY)
+        .addMixinClasses("early.MainMixin")
+        .setSide(Side.CLIENT)
+        .addTargetedMod(TargetedMod.VANILLA)
+        .setApplyIf(() -> true)),
+
+    // Inject bootstrap timer
+    BOOTSTRAP_TIMER(new Builder("Inject Bootstrap Timer")
+        .setPhase(Phase.EARLY)
+        .addMixinClasses("early.BootstrapMixin")
+        .setSide(Side.CLIENT)
+        .addTargetedMod(TargetedMod.VANILLA)
+        .setApplyIf(() -> true));
 
     public final String name;
     public final List<String> mixinClasses;
@@ -89,8 +98,7 @@ public enum Mixins {
     }
 
     private boolean shouldLoadSide() {
-        return (side == Side.BOTH
-                || (side == Side.SERVER && FMLLaunchHandler.side().isServer())
+        return (side == Side.BOTH || (side == Side.SERVER && FMLLaunchHandler.side().isServer())
                 || (side == Side.CLIENT && FMLLaunchHandler.side().isClient()));
     }
 

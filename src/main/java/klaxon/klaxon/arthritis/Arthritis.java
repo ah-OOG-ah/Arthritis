@@ -15,8 +15,7 @@ public class Arthritis {
 
     public static final Logger LOG = LogManager.getLogger(Tags.MODID);
 
-
-    @SidedProxy(clientSide = "com.myname.mymodid.ClientProxy", serverSide = "com.myname.mymodid.CommonProxy")
+    @SidedProxy(clientSide = "klaxon.klaxon.arthritis.ClientProxy", serverSide = "klaxon.klaxon.arthritis.CommonProxy")
     public static CommonProxy proxy;
 
     @Mod.EventHandler
@@ -44,5 +43,9 @@ public class Arthritis {
         proxy.serverStarting(event);
     }
 
-    public static void bootstrap() {}
+    public static void bootstrap() {
+
+        // Testing...
+        LOG.info("Hacked the Matrix!");
+    }
 }
