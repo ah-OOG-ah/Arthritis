@@ -1,5 +1,6 @@
 package klaxon.klaxon.arthritis.mixins.early;
 
+import klaxon.klaxon.arthritis.Cache;
 import klaxon.klaxon.arthritis.client.ArthritisClient;
 import net.minecraft.client.Minecraft;
 

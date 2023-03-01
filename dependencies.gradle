@@ -30,5 +30,7 @@
  */
 dependencies {
 
+    api('it.unimi.dsi:fastutil:8.5.11')
+
     runtimeOnly('com.github.GTNewHorizons:Hodgepodge:2.0.36:dev')
 }

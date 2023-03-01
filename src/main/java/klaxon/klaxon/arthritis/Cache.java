@@ -1,5 +1,6 @@
 package klaxon.klaxon.arthritis;
 
+import klaxon.klaxon.arthritis.api.CreakModule;
 import klaxon.klaxon.arthritis.utils.ProfilerUtil;
 import org.apache.commons.io.FileUtils;
 
@@ -10,6 +11,7 @@ import java.nio.file.Path;
 import java.nio.file.attribute.BasicFileAttributes;
 import java.nio.file.attribute.FileTime;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.stream.Stream;
 
 public class Cache {
@@ -19,14 +21,14 @@ public class Cache {
     private final Path cacheDir;
 
     // DashLoader metadata
-    private final List<DashModule<?>> cacheHandlers;
+    private final List<CreakModule<?>> cacheHandlers;
     private final List<DashObjectClass<?, ?>> dashObjects;
 
     // Serializers
     private final RegistrySerializer registrySerializer;
     private final MappingSerializer mappingsSerializer;
 
-    Cache(Path cacheDir, List<DashModule<?>> cacheHandlers, List<DashObjectClass<?, ?>> dashObjects) {
+    Cache(Path cacheDir, List<CreakModule<?>> cacheHandlers, List<DashObjectClass<?, ?>> dashObjects) {
         this.cacheDir = cacheDir;
         this.cacheHandlers = cacheHandlers;
         this.dashObjects = dashObjects;
@@ -144,7 +146,7 @@ public class Cache {
 
             // Get metadata
             Path metadataPath = cacheDir.resolve(METADATA_FILE_NAME);
-            CacheInfo info = DashLoader.METADATA_SERIALIZER.load(metadataPath);
+            CacheInfo info = Arthritis.METADATA_SERIALIZER.load(metadataPath);
 
             // File reading
             StageData[] stageData = registrySerializer.deserialize(cacheDir, info, dashObjects);
