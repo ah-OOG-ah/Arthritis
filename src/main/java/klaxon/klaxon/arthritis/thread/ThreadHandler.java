@@ -26,7 +26,7 @@ public final class ThreadHandler {
             return dashThread;
         }
     }, null, true);
-
+Nullable
     private ThreadHandler() {
     }
 

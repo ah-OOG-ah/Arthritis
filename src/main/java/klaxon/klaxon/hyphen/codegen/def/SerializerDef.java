@@ -1,6 +1,7 @@
 package klaxon.klaxon.hyphen.codegen.def;
 
-import dev.quantumfusion.hyphen.codegen.MethodHandler;
+
+import klaxon.klaxon.hyphen.codegen.MethodHandler;
 
 /**
  * A SerializerDef is responsible for writing code that handles a given class. <br>

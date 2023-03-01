@@ -1,9 +1,11 @@
 package klaxon.klaxon.arthritis;
 
+import cpw.mods.fml.common.Loader;
 import klaxon.klaxon.arthritis.api.CreakEntrypoint;
 import klaxon.klaxon.arthritis.api.CreakModule;
 import klaxon.klaxon.arthritis.api.MissingHandler;
 import klaxon.klaxon.arthritis.api.config.ConfigHandler;
+import klaxon.klaxon.arthritis.client.ArthritisClient;
 import klaxon.klaxon.arthritis.io.RegistrySerializer;
 import klaxon.klaxon.arthritis.io.MappingSerializer;
 import klaxon.klaxon.arthritis.io.data.CacheInfo;
@@ -116,10 +118,15 @@ public class Cache {
             }
 
             // Setup handlers
+            // TODO: Fix this mess!
+            // Here lies the first roadblock: the Fabric Loader has an API for fetching "entrypoints", which appear to
+            // just be implementations of an entrypoint class. Forge doesn't have anything that loos similar.
+            // For now, I'm only loading our implementation.
             List<MissingHandler<?>> handlers = new ArrayList<>();
-            for (CreakEntrypoint entryPoint : FabricLoader.getInstance().getEntrypoints("dashloader", CreakEntrypoint.class)) {
+            /*for (CreakEntrypoint entryPoint : FabricLoader.getInstance().getEntrypoints("dashloader", CreakEntrypoint.class)) {
                 entryPoint.onDashLoaderSave(handlers);
-            }
+            }*/
+            ArthritisClient.onDashLoaderSave(handlers);
             RegistryFactory factory = RegistryFactory.create(handlers, dashObjects);
 
             // Mappings

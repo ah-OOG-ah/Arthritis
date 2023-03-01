@@ -1,11 +1,11 @@
 package klaxon.klaxon.hyphen.codegen.def;
 
-import dev.quantumfusion.hyphen.SerializerHandler;
-import dev.quantumfusion.hyphen.codegen.MethodHandler;
-import dev.quantumfusion.hyphen.io.IOBufferInterface;
-import dev.quantumfusion.hyphen.scan.annotations.DataBufferType;
-import dev.quantumfusion.hyphen.scan.type.Clazz;
-import dev.quantumfusion.hyphen.thr.HyphenException;
+import klaxon.klaxon.hyphen.SerializerHandler;
+import klaxon.klaxon.hyphen.codegen.MethodHandler;
+import klaxon.klaxon.hyphen.io.IOBufferInterface;
+import klaxon.klaxon.hyphen.scan.annotations.DataBufferType;
+import klaxon.klaxon.hyphen.scan.type.Clazz;
+import klaxon.klaxon.hyphen.thr.HyphenException;
 import org.objectweb.asm.Opcodes;
 
 import java.nio.*;

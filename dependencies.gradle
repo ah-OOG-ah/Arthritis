@@ -28,9 +28,17 @@
  *
  * For more details, see https://docs.gradle.org/8.0.1/userguide/java_library_plugin.html#sec:java_library_configurations_graph
  */
+minecraft {
+    mainLwjglVersion = 3
+    lwjgl3Version = "3.3.2-SNAPSHOT"
+}
+
 dependencies {
 
-    api('it.unimi.dsi:fastutil:8.5.11')
+    api('com.github.GTNewHorizons:lwjgl3ify:1.1.33:dev')
+
+    implementation('it.unimi.dsi:fastutil:8.5.11')
+    implementation('com.github.luben:zstd-jni:1.5.2-2')
 
     runtimeOnly('com.github.GTNewHorizons:Hodgepodge:2.0.36:dev')
 }

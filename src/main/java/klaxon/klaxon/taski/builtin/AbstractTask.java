@@ -1,7 +1,8 @@
 package klaxon.klaxon.taski.builtin;
 
-import dev.quantumfusion.taski.Task;
-import org.jetbrains.annotations.Nullable;
+import klaxon.klaxon.taski.Task;
+
+import javax.annotation.Nullable;
 
 public abstract class AbstractTask implements Task {
 	private final String name;

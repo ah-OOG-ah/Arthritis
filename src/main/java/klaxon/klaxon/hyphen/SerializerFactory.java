@@ -1,10 +1,10 @@
 package klaxon.klaxon.hyphen;
 
-import dev.quantumfusion.hyphen.codegen.def.SerializerDef;
-import dev.quantumfusion.hyphen.io.IOInterface;
-import dev.quantumfusion.hyphen.scan.annotations.DataGlobalAnnotation;
-import dev.quantumfusion.hyphen.scan.type.Clazz;
-import dev.quantumfusion.hyphen.util.ScanUtil;
+import klaxon.klaxon.hyphen.scan.annotations.DataGlobalAnnotation;
+import klaxon.klaxon.hyphen.codegen.def.SerializerDef;
+import klaxon.klaxon.hyphen.io.IOInterface;
+import klaxon.klaxon.hyphen.scan.type.Clazz;
+import klaxon.klaxon.hyphen.util.ScanUtil;
 
 import java.lang.annotation.Annotation;
 import java.nio.file.Path;
